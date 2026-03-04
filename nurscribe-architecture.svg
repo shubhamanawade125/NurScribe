@@ -1,0 +1,217 @@
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e3a5f"/>
+    </linearGradient>
+    <linearGradient id="aws" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d97706"/>
+      <stop offset="100%" style="stop-color:#b45309"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#60a5fa"/>
+    </marker>
+    <marker id="arrowred" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f87171"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="620" fill="url(#bg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="500" y="38" text-anchor="middle" fill="white" font-size="22" font-weight="bold">NurScribe — AWS Architecture</text>
+  <text x="500" y="58" text-anchor="middle" fill="#93c5fd" font-size="12">AI Clinical Bridge for Rural India · AWS AI for Bharat Hackathon 2026</text>
+
+  <!-- ACTOR: Nurse -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="130" width="110" height="80" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="85" y="158" text-anchor="middle" font-size="22">👩‍⚕️</text>
+    <text x="85" y="178" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Hospital</text>
+    <text x="85" y="193" text-anchor="middle" fill="#93c5fd" font-size="10">Nurse</text>
+  </g>
+
+  <!-- Arrow 1: Nurse -> Upload -->
+  <line x1="140" y1="170" x2="185" y2="170" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="162" y="163" text-anchor="middle" fill="#93c5fd" font-size="9">Photo</text>
+
+  <!-- STEP 1: S3 Upload -->
+  <g filter="url(#shadow)">
+    <rect x="185" y="130" width="110" height="80" rx="10" fill="url(#aws)" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="240" y="158" text-anchor="middle" font-size="20">📦</text>
+    <text x="240" y="177" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Amazon S3</text>
+    <text x="240" y="192" text-anchor="middle" fill="#bfdbfe" font-size="9">Secure Storage</text>
+  </g>
+
+  <!-- Arrow 2: S3 -> Textract -->
+  <line x1="295" y1="170" x2="340" y2="170" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="317" y="163" text-anchor="middle" fill="#93c5fd" font-size="9">Image</text>
+
+  <!-- STEP 2: Textract -->
+  <g filter="url(#shadow)">
+    <rect x="340" y="130" width="110" height="80" rx="10" fill="url(#aws)" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="395" y="158" text-anchor="middle" font-size="20">✍️</text>
+    <text x="395" y="177" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Textract</text>
+    <text x="395" y="192" text-anchor="middle" fill="#bfdbfe" font-size="9">Handwriting OCR</text>
+  </g>
+
+  <!-- Arrow 3: Textract -> Bedrock -->
+  <line x1="450" y1="170" x2="495" y2="170" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="472" y="163" text-anchor="middle" fill="#93c5fd" font-size="9">Text</text>
+
+  <!-- STEP 3: Bedrock AI -->
+  <g filter="url(#shadow)">
+    <rect x="495" y="115" width="120" height="110" rx="10" fill="#312e81" stroke="#818cf8" stroke-width="2"/>
+    <text x="555" y="148" text-anchor="middle" font-size="22">🤖</text>
+    <text x="555" y="168" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Amazon Bedrock</text>
+    <text x="555" y="183" text-anchor="middle" fill="#c7d2fe" font-size="9">Meta Llama 3 70B</text>
+    <text x="555" y="198" text-anchor="middle" fill="#c7d2fe" font-size="9">Clinical Reasoning</text>
+    <text x="555" y="213" text-anchor="middle" fill="#a5b4fc" font-size="8">Marathi/Hindi Translation</text>
+  </g>
+
+  <!-- Arrow 4: Bedrock -> Risk Engine -->
+  <line x1="615" y1="170" x2="660" y2="170" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="637" y="163" text-anchor="middle" fill="#93c5fd" font-size="9">Analysis</text>
+
+  <!-- STEP 4: Risk Engine -->
+  <g filter="url(#shadow)">
+    <rect x="660" y="130" width="110" height="80" rx="10" fill="#7c2d12" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="715" y="158" text-anchor="middle" font-size="20">⚕️</text>
+    <text x="715" y="177" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Risk Engine</text>
+    <text x="715" y="192" text-anchor="middle" fill="#fed7aa" font-size="9">Dakshata Rules</text>
+  </g>
+
+  <!-- Arrow 5: Risk -> DynamoDB -->
+  <line x1="770" y1="170" x2="815" y2="170" stroke="#60a5fa" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STEP 5: DynamoDB -->
+  <g filter="url(#shadow)">
+    <rect x="815" y="130" width="110" height="80" rx="10" fill="url(#aws)" stroke="#60a5fa" stroke-width="1.5"/>
+    <text x="870" y="158" text-anchor="middle" font-size="20">🗄️</text>
+    <text x="870" y="177" text-anchor="middle" fill="white" font-size="11" font-weight="bold">DynamoDB</text>
+    <text x="870" y="192" text-anchor="middle" fill="#bfdbfe" font-size="9">Case Records</text>
+  </g>
+
+  <!-- Step numbers -->
+  <circle cx="240" cy="130" r="11" fill="#1d4ed8" stroke="white" stroke-width="1.5"/>
+  <text x="240" y="134" text-anchor="middle" fill="white" font-size="10" font-weight="bold">1</text>
+  <circle cx="395" cy="130" r="11" fill="#1d4ed8" stroke="white" stroke-width="1.5"/>
+  <text x="395" y="134" text-anchor="middle" fill="white" font-size="10" font-weight="bold">2</text>
+  <circle cx="555" cy="115" r="11" fill="#4338ca" stroke="white" stroke-width="1.5"/>
+  <text x="555" y="119" text-anchor="middle" fill="white" font-size="10" font-weight="bold">3</text>
+  <circle cx="715" cy="130" r="11" fill="#c2410c" stroke="white" stroke-width="1.5"/>
+  <text x="715" y="134" text-anchor="middle" fill="white" font-size="10" font-weight="bold">4</text>
+  <circle cx="870" cy="130" r="11" fill="#1d4ed8" stroke="white" stroke-width="1.5"/>
+  <text x="870" y="134" text-anchor="middle" fill="white" font-size="10" font-weight="bold">5</text>
+
+  <!-- OUTPUT ROW -->
+  <!-- Arrow down from Risk Engine to outputs -->
+  <line x1="715" y1="210" x2="715" y2="270" stroke="#fb923c" stroke-width="2" marker-end="url(#arrowred)"/>
+
+  <!-- ASHA Alert -->
+  <g filter="url(#shadow)">
+    <rect x="580" y="270" width="130" height="80" rx="10" fill="#1e3a5f" stroke="#0284c7" stroke-width="1.5"/>
+    <text x="645" y="298" text-anchor="middle" font-size="20">📞</text>
+    <text x="645" y="317" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ASHA Alert</text>
+    <text x="645" y="332" text-anchor="middle" fill="#93c5fd" font-size="9">Amazon Connect</text>
+    <text x="645" y="344" text-anchor="middle" fill="#7dd3fc" font-size="8">Marathi Voice Call</text>
+  </g>
+
+  <!-- FHIR -->
+  <g filter="url(#shadow)">
+    <rect x="730" y="270" width="130" height="80" rx="10" fill="url(#green)" stroke="#34d399" stroke-width="1.5"/>
+    <text x="795" y="298" text-anchor="middle" font-size="20">🏥</text>
+    <text x="795" y="317" text-anchor="middle" fill="white" font-size="11" font-weight="bold">FHIR R4</text>
+    <text x="795" y="332" text-anchor="middle" fill="#d1fae5" font-size="9">ABDM Compliant</text>
+    <text x="795" y="344" text-anchor="middle" fill="#a7f3d0" font-size="8">AWS HealthLake</text>
+  </g>
+
+  <!-- line from risk to both outputs -->
+  <line x1="715" y1="270" x2="645" y2="270" stroke="#fb923c" stroke-width="1.5"/>
+  <line x1="715" y1="270" x2="795" y2="270" stroke="#fb923c" stroke-width="1.5"/>
+  <line x1="645" y1="270" x2="645" y2="270" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowred)"/>
+  <line x1="795" y1="270" x2="795" y2="270" stroke="#fb923c" stroke-width="1.5" marker-end="url(#arrowred)"/>
+
+  <!-- Arrow from ASHA Alert to ASHA Worker -->
+  <line x1="645" y1="350" x2="645" y2="400" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ASHA Worker -->
+  <g filter="url(#shadow)">
+    <rect x="570" y="400" width="150" height="80" rx="10" fill="#0c4a6e" stroke="#0ea5e9" stroke-width="1.5"/>
+    <text x="645" y="428" text-anchor="middle" font-size="22">👩🏽</text>
+    <text x="645" y="448" text-anchor="middle" fill="white" font-size="11" font-weight="bold">ASHA Worker</text>
+    <text x="645" y="463" text-anchor="middle" fill="#7dd3fc" font-size="9">Receives Marathi</text>
+    <text x="645" y="475" text-anchor="middle" fill="#7dd3fc" font-size="9">Voice Instructions</text>
+  </g>
+
+  <!-- Frontend UI -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="270" width="500" height="200" rx="10" fill="rgba(15,23,42,0.8)" stroke="#334155" stroke-width="1.5"/>
+    <text x="280" y="295" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="bold">FRONTEND (S3 Static Website)</text>
+
+    <!-- Upload box -->
+    <rect x="50" y="305" width="100" height="55" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <text x="100" y="326" text-anchor="middle" font-size="14">📸</text>
+    <text x="100" y="342" text-anchor="middle" fill="white" font-size="9">Upload</text>
+    <text x="100" y="354" text-anchor="middle" fill="#93c5fd" font-size="8">Discharge Photo</text>
+
+    <!-- Progress steps -->
+    <rect x="165" y="305" width="100" height="55" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <text x="215" y="326" text-anchor="middle" font-size="14">⚡</text>
+    <text x="215" y="342" text-anchor="middle" fill="white" font-size="9">Processing</text>
+    <text x="215" y="354" text-anchor="middle" fill="#93c5fd" font-size="8">4-Step Pipeline</text>
+
+    <!-- Risk result -->
+    <rect x="280" y="305" width="100" height="55" rx="6" fill="#7c2d12" stroke="#fb923c" stroke-width="1"/>
+    <text x="330" y="326" text-anchor="middle" font-size="14">🔴</text>
+    <text x="330" y="342" text-anchor="middle" fill="white" font-size="9">Risk Score</text>
+    <text x="330" y="354" text-anchor="middle" fill="#fed7aa" font-size="8">HIGH / CRITICAL</text>
+
+    <!-- Marathi output -->
+    <rect x="395" y="305" width="100" height="55" rx="6" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <text x="445" y="326" text-anchor="middle" font-size="14">🇮🇳</text>
+    <text x="445" y="342" text-anchor="middle" fill="white" font-size="9">Marathi/Hindi</text>
+    <text x="445" y="354" text-anchor="middle" fill="#93c5fd" font-size="8">Instructions</text>
+
+    <!-- API Gateway label -->
+    <rect x="50" y="378" width="445" height="30" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="272" y="398" text-anchor="middle" fill="#64748b" font-size="10">↕ Amazon API Gateway (REST) · AWS Lambda (Serverless)</text>
+
+    <!-- Live URL -->
+    <text x="280" y="445" text-anchor="middle" fill="#3b82f6" font-size="9">🌐 nurscribe-frontend-shubham.s3-website.ap-south-1.amazonaws.com</text>
+    <text x="280" y="460" text-anchor="middle" fill="#475569" font-size="8">Public URL — Judges can test on phone</text>
+  </g>
+
+  <!-- Risk Score Legend -->
+  <g>
+    <rect x="30" y="495" width="500" height="50" rx="8" fill="rgba(15,23,42,0.6)" stroke="#334155" stroke-width="1"/>
+    <text x="280" y="514" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="bold">DAKSHATA CLINICAL RISK SCORING ENGINE</text>
+    <rect x="50" y="522" width="60" height="14" rx="3" fill="#14532d"/>
+    <text x="80" y="533" text-anchor="middle" fill="#86efac" font-size="8">LOW (0-2)</text>
+    <rect x="135" y="522" width="75" height="14" rx="3" fill="#1e40af"/>
+    <text x="172" y="533" text-anchor="middle" fill="#93c5fd" font-size="8">MEDIUM (3-6)</text>
+    <rect x="230" y="522" width="70" height="14" rx="3" fill="#92400e"/>
+    <text x="265" y="533" text-anchor="middle" fill="#fcd34d" font-size="8">HIGH (7-11)</text>
+    <rect x="320" y="522" width="80" height="14" rx="3" fill="#7f1d1d"/>
+    <text x="360" y="533" text-anchor="middle" fill="#fca5a5" font-size="8">CRITICAL (12+)</text>
+    <text x="460" y="533" text-anchor="middle" fill="#475569" font-size="8">→ ASHA Alert</text>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="500" y="600" text-anchor="middle" fill="#334155" font-size="10">NurScribe · AWS AI for Bharat Hackathon 2026 · Team: Shubham Anawade</text>
+</svg>
